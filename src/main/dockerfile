@@ -1,0 +1,7 @@
+FROM bellsoft/liberica-openjdk-alpine
+#копируем исходный код из хостовой директории в директорию контейнера
+COPY ./java ./src
+#создаем в контейнере директорию out
+RUN mkdir ./out
+RUN javac -sourcepath ./src -d out src/ru/fedornic/user/Main.java
+CMD java -classpath ./out ru.fedornic.user.Main
